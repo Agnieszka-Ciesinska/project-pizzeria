@@ -94,6 +94,7 @@ const select = {
       thisProduct.formInputs = thisProduct.form.querySelectorAll(select.all.formInputs);
       thisProduct.cartButton = thisProduct.element.querySelector(select.menuProduct.cartButton);
       thisProduct.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
+      thisProduct.imageWrapper = thisProduct.element.querySelector(select.menuProduct.imageWrapper);
     }
 
     initAccordion(){
@@ -202,10 +203,20 @@ const select = {
     if(option.default) {
 
       // reduce price variable
-      
+
       price -= option.price;
     }
   }
+
+  const optionImage = thisProduct.imageWrapper.querySelector('.' + paramId + '-' + optionId);
+
+  if(optionImage){
+    if(optionSelected){
+      optionImage.classList.add(classNames.menuProduct.imageVisible);
+    } else {
+      optionImage.classList.remove(classNames.menuProduct.imageVisible);
+    }
+    }
 
     }
   }
@@ -214,7 +225,6 @@ const select = {
   thisProduct.priceElem.innerHTML = price;
   }
     }
-  
 
   
   const app = {
