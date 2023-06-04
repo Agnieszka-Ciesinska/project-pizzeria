@@ -295,7 +295,7 @@ const select = {
     addToCart(){
       const thisProduct = this;
 
-      app.cart.add(thisProduct.prepareCartProduct);
+      app.cart.add(thisProduct.prepareCartProduct());
     }
 
     prepareCartProduct(){
@@ -306,8 +306,7 @@ const select = {
         amount: thisProduct.amountWidget.value,
         priceSingle: thisProduct.priceSingle,
         price: thisProduct.priceSingle * thisProduct.amountWidget.value,
-        params: [],
-        //params: thisProduct.prepareCartProductParams(),
+        params: thisProduct.prepareCartProductParams(),
       };
       
       return productSummary;
@@ -436,6 +435,7 @@ return params;
         thisCart.dom = {};
         thisCart.dom.wrapper = element;
         thisCart.dom.toggleTrigger = thisCart.dom.wrapper.querySelector(select.cart.toggleTrigger);
+        thisCart.dom.productList = thisCart.dom.wrapper.querySelector(select.cart.productList);
       }
 
       initActions(){
@@ -446,7 +446,13 @@ return params;
       }
 
       add(menuProduct){
-        //const thisCard = this;
+        const thisCart = this;
+
+        const generatedHTML = templates.cartProduct(menuProduct);
+
+        const generatedDOM = utils.createDOMFromHTML(generatedHTML);
+
+        thisCart.dom.productList.appendChild(generatedDOM);
 
         console.log('adding product', menuProduct);
       }
