@@ -447,12 +447,12 @@ return params;
 
       add(menuProduct){
         const thisCart = this;
-
-        const generatedHTML = templates.cartProduct(menuProduct);
-
+        const generatedHTML = templates.cartProduct(menuProduct); 
         const generatedDOM = utils.createDOMFromHTML(generatedHTML);
-
         thisCart.dom.productList.appendChild(generatedDOM);
+
+        thisCart.products.push(menuProduct);
+        
 
         console.log('adding product', menuProduct);
       }
@@ -498,3 +498,6 @@ return params;
 
   app.init();
 }
+
+
+
