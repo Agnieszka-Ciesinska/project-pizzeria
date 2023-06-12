@@ -290,6 +290,16 @@
       "deliveryFee": {},
       "products": [],
       "id": 7
+    },
+    {
+      "address": "paulatest@wp.pl",
+      "phone": "123456789",
+      "totalPrice": 29,
+      "subtotalPrice": 9,
+      "totalNumber": 1,
+      "deliveryFee": {},
+      "products": [],
+      "id": 8
     }
   ]
 }
